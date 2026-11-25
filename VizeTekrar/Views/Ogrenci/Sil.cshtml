@@ -1,0 +1,43 @@
+﻿@model VizeTekrar.Models.Ogrenciler
+
+@{
+    ViewData["Title"] = "Öğrenci Sil";
+}
+
+<div class="container mt-4">
+    <h3 class="text-danger">Bu öğrenciyi silmek istediğinize emin misiniz?</h3>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <dl class="row">
+               
+                <dt class="col-sm-4">Öğrenci No</dt>
+                <dd class="col-sm-8">@Model.Id</dd>
+
+                <dt class="col-sm-4">Adı</dt>
+                <dd class="col-sm-8">@Model.Ad</dd>
+
+                <dt class="col-sm-4">Fotoğraf</dt>
+                <dd class="col-sm-8">
+                    @if (!string.IsNullOrEmpty(Model.FotografYolu))
+                    {
+                        <img src="~/@Model.FotografYolu" alt="Öğrenci Fotoğrafı" width="150" class="img-thumbnail" />
+                    }
+                    else
+                    {
+                        <span class="text-muted">Fotoğraf yok</span>
+                    }
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <!-- Silme işlemini tetikleyecek Form -->
+    <form asp-action="SilOnaylandi" method="post">
+        <!-- Hangi öğrencinin silineceğini arka plana göndermek için gizli bir input (hidden field) kullanıyoruz -->
+        <input type="hidden" asp-for="Id" />
+
+        <button type="submit" class="btn btn-danger">Evet, Sil</button>
+        <a asp-action="Index" class="btn btn-secondary">İptal, Listeye Dön</a>
+    </form>
+</div>

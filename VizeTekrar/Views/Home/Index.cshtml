@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<div class="container mt-4">
+    <div class="p-4 mb-4 bg-light rounded-3 border">
+        <h2 class="fw-bold">Öğrenci ve Bölüm Yönetim Sistemi</h2>
+        <p class="text-muted mb-0">ASP.NET Core MVC & Entity Framework Core ile geliştirilmiş yönetim paneli.</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card text-white bg-primary shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Toplam Bölüm</h5>
+                    <p class="display-5 fw-bold">@ViewBag.ToplamBolum</p>
+                    <a asp-controller="Bolumler" asp-action="Index" class="btn btn-light btn-sm">Bölümleri Yönet →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card text-white bg-success shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Toplam Öğrenci</h5>
+                    <p class="display-5 fw-bold">@ViewBag.ToplamOgrenci</p>
+                    <a asp-controller="Ogrenci" asp-action="Index" class="btn btn-light btn-sm">Öğrencileri Yönet →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

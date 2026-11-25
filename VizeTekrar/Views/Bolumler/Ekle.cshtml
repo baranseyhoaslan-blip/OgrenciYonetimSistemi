@@ -1,0 +1,16 @@
+﻿@model VizeTekrar.Models.Bolumler
+@{
+    ViewData["Title"] = "Bölüm Ekle";
+}
+<div class="container mt-4" style="max-width: 500px;">
+    <h2>Yeni Bölüm Ekle</h2>
+    <hr />
+    <form asp-action="BolumEkle" method="post">
+        <div class="mb-3">
+            <label class="form-label">Bölüm Adı</label>
+            <input type="text" asp-for="BolumAdi" class="form-control" required />
+        </div>
+        <button type="submit" class="btn btn-success">Kaydet</button>
+        <a asp-action="Index" class="btn btn-secondary">Listeye Dön</a>
+    </form>
+</div>

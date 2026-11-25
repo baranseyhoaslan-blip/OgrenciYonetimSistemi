@@ -1,0 +1,34 @@
+﻿@using VizeTekrar.Models;
+@model List<Bolumler> 
+@{
+    ViewData["Title"] = "Bölümler Listesi";
+    }
+
+<table class="table table-bordered table-striped align-middle">
+    <thead>
+        <tr>
+            <th>Bölüm Adı</th>
+            <th>Bölüm ID</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+
+    <tr>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>@i.BolumAdi</td>
+                <td>@i.BolumlerId</td>
+                <td>
+                    <form asp-action="Sil" method="post">
+                        <input type="hidden" name="id" value="@i.BolumlerId" />
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Silmek istiyor musunuz?')">Sil</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+<button class="btn btn-primary" onclick="location.href='@Url.Action("Ekle")'">Yeni Bölüm Ekle</button>

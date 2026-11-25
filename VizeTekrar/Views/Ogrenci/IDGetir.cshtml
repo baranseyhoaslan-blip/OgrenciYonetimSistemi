@@ -1,0 +1,15 @@
+﻿
+@model List<VizeTekrar.Models.Ogrenciler>
+@{
+    ViewData["Title"] = "Öğrenci ID Getir";
+}
+@foreach(var i in Model)
+{
+    <div class="mb-3">
+        <label class="form-label">Öğrenci ID</label>
+        <input type="text" value="@i.Id" class="form-control" readonly />
+        <label class="form-label">Öğrenci Adı</label>
+        <input type="text" value="@i.Ad" class="form-control" readonly />
+    </div>
+   
+}

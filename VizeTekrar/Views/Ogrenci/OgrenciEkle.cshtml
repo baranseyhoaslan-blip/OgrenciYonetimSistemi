@@ -1,0 +1,28 @@
+﻿@model VizeTekrar.Models.Ogrenciler
+@{
+    ViewData["Title"] = "Yeni Öğrenci Ekle";
+}
+<div class="container mt-4" style="max-width: 500px;">
+    <h2>Yeni Öğrenci Ekle</h2>
+    <hr />
+    <form asp-action="OgrenciEkle" method="post">
+        <div class="mb-3">
+            <label class="form-label">Öğrenci No</label>
+            <input type="text" asp-for="OgrenciNo" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Adı</label>
+            <input type="text" asp-for="Ad" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Soyadı</label>
+            <input type="text" asp-for="Soyad" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Bolumler Id</label>
+            <input type="text" asp-for="BolumlerId" class="form-control" required />
+        </div>
+        <button type="submit" class="btn btn-success">Kaydet</button>
+        <a asp-action="Index" class="btn btn-secondary">Listeye Dön</a>
+    </form>
+</div>

@@ -1,0 +1,60 @@
+﻿@model VizeTekrar.Models.Ogrenciler
+@{
+    ViewData["Title"] = "Güncelle";
+}
+<div class="container mt-4" style="max-width: 500px;">
+    <h2>Güncelle</h2>
+    <hr />
+    <!-- Form gönderildiğinde HttpPost olan Ekle metoduna gidecek     -->
+    @using (Html.BeginForm("Ekle", "Ogrenci", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="mb-3">
+            <label class="form-label">Öğrenci No</label>
+            <input type="text" asp-for="OgrenciNo" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Adı</label>
+            <input type="text" asp-for="Ad" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Soyadı</label>
+            <input type="text" asp-for="Soyad" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Cinsiyet</label>
+            <select name="Cinsiyet" class="form-select" required>
+                <option value="">Seçiniz</option>
+                <option value="Erkek" selected="@(Model?.Cinsiyet == "Erkek")">Erkek</option>
+                <option value="Kadın" selected="@(Model?.Cinsiyet == "Kadın")">Kadın</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Doğum Tarihi</label>
+            <input type="date" asp-for="DogumTarihi" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">E-Posta</label>
+            <input type="text" asp-for="Eposta" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Telefon</label>
+            <input type="text" asp-for="Telefon" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Başvurduğu Program</label>
+            @Html.DropDownListFor(
+            model => model.BolumlerId,
+                (SelectList)ViewBag.BolumListesi,
+                "Bölüm Seç",
+                new { @class = "form-control" }
+                )
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Fotoğraf</label>
+        <input type="file" asp-for="FotografYolu" class="form-control" accept=".jpg,.jpeg,.png,.bmp" />
+    </div>
+    <button type="submit" class="btn btn-success">Kaydet</button>
+    <a asp-action="Index" class="btn btn-secondary">Listeye Dön</a>
+        }
+</div>
